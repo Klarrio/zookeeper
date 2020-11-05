@@ -1131,12 +1131,7 @@ public class QuorumCnxManager {
                 }
 
                 socket.setReuseAddress(true);
-
-                if (address.isUnresolved()) {
-                    // Retry DNS resolution
-                    address = new InetSocketAddress(address.getHostName(), address.getPort());
-                }
-
+                address = new InetSocketAddress(address.getHostString(), address.getPort());
                 socket.bind(address);
 
                 return socket;
